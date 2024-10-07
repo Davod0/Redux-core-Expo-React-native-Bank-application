@@ -1,14 +1,18 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
+import { Provider } from "react-redux";
 import RootStackNavigator from "./Navigators/RootStackNavigator";
+import { store } from "./Store/store";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <StatusBar style="auto" />
-      <RootStackNavigator />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        <RootStackNavigator />
+      </NavigationContainer>
+    </Provider>
   );
 }
 

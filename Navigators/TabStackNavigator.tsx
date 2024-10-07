@@ -1,4 +1,3 @@
-import { MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import { BalanceScreen } from "../Screens/BalanceScreen";
@@ -17,7 +16,8 @@ export function TabStackNavigator() {
     <TabStack.Navigator>
       <TabStack.Screen name="Balance" component={BalanceScreen} />
       <TabStack.Screen name="Deposit" component={DepositScreen} />
-      <TabStack.Screen
+      <TabStack.Screen name="Withdraw" component={WithdrawScreen} />
+      {/* <TabStack.Screen
         name="Withdraw"
         component={WithdrawScreen}
         options={{
@@ -26,7 +26,7 @@ export function TabStackNavigator() {
             <MaterialIcons name="home" size={24} color={props.color} />
           ),
         }}
-      />
+      /> */}
     </TabStack.Navigator>
   );
 }

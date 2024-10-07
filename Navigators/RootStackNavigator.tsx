@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "../Screens/HomeScreen";
 import { TabStackNavigator } from "./TabStackNavigator";
 
 export type RootStackParamList = {
