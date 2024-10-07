@@ -1,14 +1,19 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Text } from "react-native";
+import HomeScreen from "../Screens/HomeScreen";
+import { TabStackNavigator } from "./TabStackNavigator";
 
 export type RootStackParamList = {
-  Home: undefined;
+  TabStackNavigator: undefined;
 };
 export const RootStack = createNativeStackNavigator<RootStackParamList>();
 export default function RootStackNavigator() {
   return (
-    <View>
-      <Text>Root Stack</Text>
-    </View>
+    <RootStack.Navigator>
+      <RootStack.Screen
+        name="TabStackNavigator"
+        component={TabStackNavigator}
+        options={{ headerShown: false }}
+      />
+    </RootStack.Navigator>
   );
 }

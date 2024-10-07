@@ -1,9 +1,9 @@
 import { View, Text } from "react-native";
 
-export default function HomeScreen() {
+export function WithdrawScreen() {
   return (
     <View>
-      <Text>Home Screen</Text>
+      <Text>Withdraw Screen</Text>
     </View>
   );
 }
