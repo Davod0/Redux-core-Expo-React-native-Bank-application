@@ -1,14 +1,4 @@
-type setNameAction = {
-    type: "SET_NAME";
-    paylod: string;
-};
-
-type setSavingGoalAction = {
-    type: "SET_SAVING_GOAL";
-    payload: number;
-};
-
-type KnownActions = setNameAction | setSavingGoalAction;
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type userState = {
     name: string;
@@ -21,20 +11,18 @@ const initialState: userState = {
 };
 
 
-export default function userReducer(state: userState = initialState, action: KnownActions): userState {
-    switch (action.type) {
-        case "SET_NAME":
-            return {
-                ...state,
-                name: action.paylod,
-            };
-        case "SET_SAVING_GOAL":
-            return {
-                ...state,
-                savingGoal: action.payload,
-            };
-        default:
-            action satisfies never;
-            return state;
-    }
-}
+const userSlice = createSlice({
+    name: "user",
+    initialState,
+    reducers: {
+        setName: (state, action: PayloadAction<string>) => {
+            state.name = action.payload;
+        },
+        setSavingGoal: (state, action: PayloadAction<number>) => {
+            state.savingGoal = action.payload;
+        },
+    },
+});
+
+export const { setName, setSavingGoal } = userSlice.actions;
+export default userSlice.reducer;
