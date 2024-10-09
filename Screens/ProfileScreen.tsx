@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
-import { useDispatch } from "react-redux";
 import { useAppDispatch } from "../hooks";
 
 export function ProfileScreen() {
