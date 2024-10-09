@@ -2,11 +2,11 @@ import { Text, View } from "react-native";
 import { useAppSelector } from "../hooks";
 
 export function BalanceScreen() {
-  const balance = useAppSelector((state) => state);
+  const balance = useAppSelector((state) => state.balance);
   return (
     <View>
       <Text>Balance Screen</Text>
-      <Text>Balance {balance}</Text>
+      <Text>Balance: {balance}</Text>
     </View>
   );
 }
