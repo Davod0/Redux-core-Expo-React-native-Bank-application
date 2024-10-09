@@ -2,7 +2,7 @@ import { Text, View } from "react-native";
 import { useAppSelector } from "../hooks";
 
 export function BalanceScreen() {
-  const state = useAppSelector((state) => state);
+  const state = useAppSelector((state) => state.bank);
   let transactionNumber = 0;
   return (
     <View
