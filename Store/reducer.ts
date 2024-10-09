@@ -14,19 +14,24 @@ type KnownAction = DepositAction | WithdrawAction;
 // DEFINE STATE
 type BankState = {
     balance: number;
-}
+    transactions: number[];
+};
 
 const initialState = {
     balance: 0,
-}
+    transactions: [],
+};
 
 // DEFINE REDUCER
-export function bankReducer(state: BankState = initialState, action: KnownAction) {
+export function bankReducer(
+    state: BankState = initialState,
+    action: KnownAction
+): BankState {
     switch (action.type) {
         case "DEPOSIT":
-            return { balance: state.balance + action.payload };
+            return { ...state, balance: state.balance + action.payload, transactions: [...state.transactions, action.payload] };
         case "WITHDRAW":
-            return { balance: state.balance + action.payload };
+            return { ...state, balance: state.balance + action.payload, transactions: [...state.transactions, -action.payload] };
         default:
             return state;
     }
