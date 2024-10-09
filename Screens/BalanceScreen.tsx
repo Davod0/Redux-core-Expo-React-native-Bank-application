@@ -1,8 +1,10 @@
 import { Text, View } from "react-native";
 import { useAppSelector } from "../hooks";
+import { selectBank } from "../Store/Bank/selectors";
 
 export function BalanceScreen() {
-  const state = useAppSelector((state) => state.bank);
+  const bankState = useAppSelector(selectBank);
+  const userState = useAppSelector((state) => state.user);
   let transactionNumber = 0;
   return (
     <View
@@ -12,10 +14,10 @@ export function BalanceScreen() {
         justifyContent: "center",
       }}
     >
-      <Text style={{ fontSize: 30, padding: 10 }}>Balance Screen</Text>
-      <Text style={{ fontSize: 20 }}>Balance: {state.balance}</Text>
+      <Text style={{ fontSize: 30, padding: 10 }}>Name: {userState.name}</Text>
+      <Text style={{ fontSize: 20 }}>Balance: {bankState.balance}</Text>
       <Text style={{ fontSize: 30, padding: 10 }}>Transactions</Text>
-      {state.transactions.map((Transaction, index) => (
+      {bankState.transactions.map((Transaction, index) => (
         <Text style={{ fontSize: 20 }} key={index}>
           Transaction {(transactionNumber += 1)}: {Transaction} kr
         </Text>
