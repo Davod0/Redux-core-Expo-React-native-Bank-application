@@ -1,6 +1,6 @@
 import { Button, Text, View } from "react-native";
-import { useDispatch } from "react-redux";
 import { useAppDispatch } from "../hooks";
+import { deposit } from "../Store/Bank/reducer";
 
 export function DepositScreen() {
   const dispatch = useAppDispatch();
@@ -8,10 +8,7 @@ export function DepositScreen() {
   return (
     <View>
       <Text>Deposit Screen</Text>
-      <Button
-        title="Deposit 1000 kr"
-        onPress={() => dispatch({ type: "DEPOSIT", payload: 1000 })}
-      />
+      <Button title="Deposit 1000 kr" onPress={() => dispatch(deposit(1000))} />
     </View>
   );
 }

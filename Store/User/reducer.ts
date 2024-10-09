@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchGithubUserName } from "./actions";
 
 type userState = {
     name: string;
@@ -15,14 +16,20 @@ const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        setName: (state, action: PayloadAction<string>) => {
+        setNameAction: (state, action: PayloadAction<string>) => {
             state.name = action.payload;
         },
         setSavingGoal: (state, action: PayloadAction<number>) => {
             state.savingGoal = action.payload;
         },
     },
+    extraReducers: (builder) => {
+        builder.addCase(fetchGithubUserName.fulfilled, (state, action) => {
+            state.name = action.payload;
+        })
+    }
 });
 
-export const { setName, setSavingGoal } = userSlice.actions;
+
+export const { setNameAction, setSavingGoal } = userSlice.actions;
 export default userSlice.reducer;

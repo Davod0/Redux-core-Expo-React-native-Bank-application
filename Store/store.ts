@@ -1,9 +1,7 @@
-import { combineReducers, legacy_createStore as createStore } from "redux";
-import { bankReducer } from "./Bank/reducer";
-import userReducer from "./User/reducer";
 import { configureStore } from "@reduxjs/toolkit";
-// Skapa redux storen i den här filen!
-// tänk på att installera redux och även react-redux
+import bankReducer from "./Bank/reducer";
+import userReducer from "./User/reducer";
+
 
 // CREATE STORE
 export const store = configureStore({

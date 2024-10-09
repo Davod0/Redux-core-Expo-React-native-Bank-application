@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import { useAppDispatch } from "../hooks";
+import { setNameAction } from "../Store/User/reducer";
 
 export function ProfileScreen() {
   const [name, setName] = useState("");
@@ -19,9 +20,7 @@ export function ProfileScreen() {
       />
       <Button
         title="Save"
-        onPress={() =>
-          dispatch({ type: "SET_NAME", paylod: name }, setName(""))
-        }
+        onPress={() => dispatch(setNameAction(name), setName(""))}
       />
     </View>
   );
