@@ -11,13 +11,13 @@ export function ProfileScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Profile Screen</Text>
       <Text style={styles.label}>Enter your name:</Text>
-      <TextInput
+      {/* <TextInput
         value={name}
         onChangeText={setName}
         style={styles.input}
         placeholder="Your name"
         placeholderTextColor="#888"
-      />
+      /> */}
       <Button
         title="Save"
         onPress={() => dispatch(setNameAction(name), setName(""))}
