@@ -1,12 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchGithubUserName } from "./actions";
+import { User } from "firebase/auth";
+import { fetchGithubUserName, signUpUser } from "./actions";
 
 type userState = {
+    current?: User;
     name: string;
     savingGoal: number;
 };
 
 const initialState: userState = {
+    current: undefined,
     name: "",
     savingGoal: 0,
 };
@@ -26,8 +29,12 @@ const userSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchGithubUserName.fulfilled, (state, action) => {
             state.name = action.payload;
-        })
+        });
+        builder.addCase(signUpUser.fulfilled, (state, action) => {
+            state.current = action.payload;
+        });
     }
+
 });
 
 

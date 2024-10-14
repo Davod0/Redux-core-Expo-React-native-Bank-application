@@ -2,25 +2,16 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Button, Text, TextInput, View } from "react-native";
 import { auth } from "../firebase";
+import { useAppDispatch } from "../hooks";
+import { signUpUser } from "../Store/User/actions";
 
 export function SignUpScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useAppDispatch();
 
   const handleSignUp = async () => {
-    try {
-      console.log("email: ", email);
-      console.log("password: ", password);
-      const result = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      result.user;
-      console.log("user: ", result.user);
-    } catch (error) {
-      console.error(error);
-    }
+    dispatch(signUpUser({email, password}));
   };
 
   return (

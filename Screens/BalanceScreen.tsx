@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Text, View } from "react-native";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { selectBank } from "../Store/Bank/selectors";
-import { fetchGithubUserName } from "../Store/User/actions";
 
 export function BalanceScreen() {
   const bankState = useAppSelector(selectBank);
@@ -11,7 +10,7 @@ export function BalanceScreen() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchGithubUserName());
+    // dispatch(fetchGithubUserName());
   });
 
   return (
