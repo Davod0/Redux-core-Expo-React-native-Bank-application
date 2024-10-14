@@ -5,3 +5,4 @@ npm install redux
 npm install react-redux
 npm install @reduxjs/toolkit
 npm install firebase
+npx expo @react-native-async-storage/async-storage

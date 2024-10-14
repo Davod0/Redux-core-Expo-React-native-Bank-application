@@ -1,25 +1,25 @@
+import EvilIcons from "@expo/vector-icons/EvilIcons";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import { BalanceScreen } from "../Screens/BalanceScreen";
 import { DepositScreen } from "../Screens/DepositScreen";
 import { ProfileScreen } from "../Screens/ProfileScreen";
-import { WithdrawScreen } from "../Screens/WithdrawScreen";
-import EvilIcons from "@expo/vector-icons/EvilIcons";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { SignUpScreen } from "../Screens/SignUpScreen";
 
 export type TabParamList = {
   Balance: undefined;
   Deposit: undefined;
-  Withdraw: undefined;
+  SignUp: undefined;
   Profile: undefined;
 };
 export const TabStack = createBottomTabNavigator<TabParamList>();
 
 export function TabStackNavigator() {
   return (
-    <TabStack.Navigator>
+    <TabStack.Navigator initialRouteName="SignUp">
       <TabStack.Screen
         name="Balance"
         component={BalanceScreen}
@@ -45,16 +45,12 @@ export function TabStackNavigator() {
         }}
       />
       <TabStack.Screen
-        name="Withdraw"
-        component={WithdrawScreen}
+        name="SignUp"
+        component={SignUpScreen}
         options={{
-          title: "Withdraw",
+          title: "Sign up",
           tabBarIcon: (props) => (
-            <MaterialCommunityIcons
-              name="credit-card-minus-outline"
-              size={24}
-              color={props.color}
-            />
+            <FontAwesome name="sign-in" size={24} color="black" />
           ),
         }}
       />

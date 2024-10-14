@@ -4,8 +4,8 @@ export const fetchGithubUserName = createAppAsyncThunk<string, void>("user/fetch
     async (_, thunkApi) => {
         const response = await fetch(`https://api.github.com/users/tsourdox`);
         const json = await response.json();
-        console.log(json);
-        return json.id;
+        // console.log(json);
+        return json.name;
     }
 )
 
