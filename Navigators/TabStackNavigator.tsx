@@ -3,17 +3,19 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
+import { useAppSelector } from "../hooks";
 import { BalanceScreen } from "../Screens/BalanceScreen";
 import { DepositScreen } from "../Screens/DepositScreen";
 import { ProfileScreen } from "../Screens/ProfileScreen";
+import { SignInScreen } from "../Screens/SignInScreen";
 import { SignUpScreen } from "../Screens/SignUpScreen";
-import { useAppSelector } from "../hooks";
 
 export type TabParamList = {
   Balance: undefined;
   Deposit: undefined;
   SignUp: undefined;
   Profile: undefined;
+  SignIn: undefined;
 };
 export const TabStack = createBottomTabNavigator<TabParamList>();
 
@@ -23,16 +25,28 @@ export function TabStackNavigator() {
   return (
     <TabStack.Navigator initialRouteName="SignUp">
       {!user ? (
-        <TabStack.Screen
-          name="SignUp"
-          component={SignUpScreen}
-          options={{
-            title: "Sign up",
-            tabBarIcon: (props) => (
-              <FontAwesome name="sign-in" size={24} color="black" />
-            ),
-          }}
-        />
+        <>
+          <TabStack.Screen
+            name="SignUp"
+            component={SignUpScreen}
+            options={{
+              title: "Sign up",
+              tabBarIcon: (props) => (
+                <FontAwesome name="sign-in" size={24} color="black" />
+              ),
+            }}
+          />
+          <TabStack.Screen
+            name="SignIn"
+            component={SignInScreen}
+            options={{
+              title: "Sign in",
+              tabBarIcon: (props) => (
+                <FontAwesome name="sign-in" size={24} color="black" />
+              ),
+            }}
+          />
+        </>
       ) : (
         <>
           <TabStack.Screen
