@@ -19,15 +19,13 @@ type signUpPayload = {
 export const signUpUser = createAppAsyncThunk<User, signUpPayload>(
     "user/sign-up", async (payload, thunkApi) => {
         try {
-            // console.log("email: ", payload.email);
-            // console.log("password: ", payload.password);
             const result = await createUserWithEmailAndPassword(
                 auth,
                 payload.email,
                 payload.password
             );
-            console.log("user: ", result.user);
-            return result.user;
+            console.log("user: ", result.user.toJSON() as User);
+            return result.user.toJSON() as User;
         } catch (error) {
             console.error(error);
             return thunkApi.rejectWithValue("Could not register!");
